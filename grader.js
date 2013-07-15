@@ -35,3 +35,24 @@ var assertFileExists = function(infile) {
 	}
 	return instr;
 };
+
+var cheerioHtmlFile = function(htmlfile) {
+	return cheerio.load(fs.readFileSync(htmlfile));
+};
+
+var loadChecks = function(cheksfile) {
+	return JSON.parse(fs.readFileSync(checksfile));
+};
+
+var checkHtmlFile = function(htmlfile, checksfile) { 
+	$ = cheerioHtmlFile(htmlfile);
+	var checks = loadChecks(checksfile).sort();
+	var out = {};
+	for(var ii in checks) { 
+		var present = $(checks[ii]).length > 0;
+		out[checks[ii]] = present;
+	}
+	return out;
+};
+
+
