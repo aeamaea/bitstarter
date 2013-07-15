@@ -25,7 +25,8 @@ var fs = require('fs');
 var program = require('commander');
 var cheerio = require('cheerio');
 var HTMLFILE_DEFAULT = "index.html";
-var CHECKSFILE_DEFAULT = "checks.json";
+exit
+ar CHECKSFILE_DEFAULT = "checks.json";
 
 var assertFileExists = function(infile) {
 	var instr = infile.toString();
@@ -59,7 +60,7 @@ var clone = function(fn) {
 	// Workaround for commander.js issue
 	// http://stackoverflow.com/a/6772648
 	return(fn.bind({}));
-n}; 
+}; 
 
 
 if(require.main == module) {
@@ -72,5 +73,5 @@ if(require.main == module) {
 	var outJson = JSON.stringify(checkJson, null, 4);
 	console.log(outJson);
 } else {
-    exports.checkHtmlFile = checkHtmlFile;
+	exports.checkHtmlFile = checkHtmlFile;
 }
